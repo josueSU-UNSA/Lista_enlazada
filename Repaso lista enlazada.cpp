@@ -47,6 +47,7 @@ class LinkedList{
         int size;
     public:
         LinkedList();
+        int getSize();
         void insert(int num);
         void remove(int pos);
         void print();
@@ -56,6 +57,16 @@ class LinkedList{
 LinkedList::LinkedList(){
     this->head=NULL;
 
+}
+int LinkedList::getSize(){
+    Node *Aux=this->head;
+    int count=0;
+    while(Aux!=NULL){
+        cout<<Aux->getNumero()<<endl;
+        Aux=Aux->getSiguiente();
+        count+=1;
+    }
+    return count;
 }
 void LinkedList::insert(int num){
     //creacion del primer nodo
@@ -113,7 +124,7 @@ ostream& operator << (ostream &o, const LinkedList&DA){
     } 
     return o;
 }
-LinkedList::~LinkedList(){
+LinkedList::~LinkedList(){//elimina todos los nodos
     Node *Aux=head;
     Node *Actual;
     while(Aux!=NULL){
@@ -139,10 +150,12 @@ int main(){
     Ve->insert(790);
     Ve->insert(123);
     Ve->print();
+    cout<<"El tamano es "<<Ve->getSize()<<endl;
     //cout<<Ve;
     Ve->remove(3);
     cout<<"Lista eliminando la posicion 3"<<endl;
     //cout<<Ve;
     Ve->print();
+    cout<<"El tamano es "<<Ve->getSize()<<endl;
     return 0;
 }

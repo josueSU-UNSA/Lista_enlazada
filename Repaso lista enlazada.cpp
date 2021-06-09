@@ -18,7 +18,6 @@ class Node{
         void setSiguiente(Node *Sig);
         int getNumero();
         Node *getSiguiente();
-        //friend ostream& operator <<(ostream &o, const Node&DA);
         ~Node();
 };
 Node::Node(){
@@ -45,10 +44,6 @@ int Node::getNumero(){
 Node *Node::getSiguiente(){
     return this->Sig;
 }
-/*ostream& operator << (ostream &o, const Node &DA){
-    o <<DA.num;
-    return o;
-}*/
 Node::~Node(){}
 
 class LinkedList{
@@ -60,7 +55,6 @@ class LinkedList{
         void insert(int num);
         void remove(int pos);
         void print();
-        friend ostream& operator <<(ostream &o, const LinkedList&DA);
         ~LinkedList();
 };
 LinkedList::LinkedList(){

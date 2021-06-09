@@ -1,11 +1,6 @@
 #include <iostream>
 using namespace std;
-//Insertando elementos en una lista enlazada
-//pasos
-//1.Crear un nuevo nodo
-//2.Asignar a nuevo_nodo->dato el elemento que queremos incluir a la lista 
-//3.Crear dos nodos auxiliares y asignar lista al primero de ellos
-//4.Insertar el elemento a la lista
+//Clase nodo
 class Node{
     private:
         int num;
@@ -45,7 +40,7 @@ Node *Node::getSiguiente(){
     return this->Sig;
 }
 Node::~Node(){}
-
+//Clase lista enlazada
 class LinkedList{
     private:
         Node *head;
@@ -55,6 +50,7 @@ class LinkedList{
         void insert(int num);
         void remove(int pos);
         void print();
+        friend ostream& operator << (ostream &o, const LinkedList&DA);
         ~LinkedList();
 };
 LinkedList::LinkedList(){
@@ -109,6 +105,14 @@ void LinkedList::print(){
         Aux=Aux->getSiguiente();
     }
 }
+ostream& operator << (ostream &o, const LinkedList&DA){
+    Node *Aux=DA.head;
+    while(Aux!=NULL){
+        o<<Aux->getNumero()<<" ";
+        Aux=Aux->getSiguiente();    
+    } 
+    return o;
+}
 LinkedList::~LinkedList(){
     Node *Aux=head;
     Node *Actual;
@@ -119,7 +123,12 @@ LinkedList::~LinkedList(){
     }
     head=NULL;
 }
-
+//Insertando elementos en una lista enlazada
+//pasos
+//1.Crear un nuevo nodo
+//2.Asignar a nuevo_nodo->dato el elemento que queremos incluir a la lista 
+//3.Crear dos nodos auxiliares y asignar lista al primero de ellos
+//4.Insertar el elemento a la lista
 int main(){ 
     LinkedList *Ve=new LinkedList;
     cout<<"Lista inicial"<<endl;
@@ -130,8 +139,10 @@ int main(){
     Ve->insert(790);
     Ve->insert(123);
     Ve->print();
+    //cout<<Ve;
     Ve->remove(3);
     cout<<"Lista eliminando la posicion 3"<<endl;
+    //cout<<Ve;
     Ve->print();
     return 0;
 }

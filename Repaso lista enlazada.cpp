@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 using namespace std;
 //Insertando elementos en una lista enlazada
 //pasos
@@ -137,11 +136,8 @@ int main(){
     Ve->insert(790);
     Ve->insert(123);
     Ve->print();
-    //cout<<Ve;
     Ve->remove(3);
     cout<<"Lista eliminando la posicion 3"<<endl;
-    //cout<<Ve;
     Ve->print();
-    getch();
     return 0;
 }
